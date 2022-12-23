@@ -20,6 +20,18 @@
 // BONUS 3:
 // Aggiungere bottoni di start/stop  del meccanismo di autoplay.
 
+const carouselElement=document.getElementById("corousel");
+
+const prevButton=document.getElementById("prev-button");
+const nextButton=document.getElementById("next-button");
+
+
+
+const galleryElement=document.getElementById("gallery")
+
+
+
+
 const data = [
     {
       image: 'img/01.webp',
@@ -43,4 +55,41 @@ const data = [
       text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }
   ];
+  
+  
+  for(let i=0; i<data.length; i++){
+    
+    galleryElement.innerHTML+=`<h1 class= >${data[i].title}</h1>
+    <p class="  ">L${data[i].text} </p>
+    <img src="${data[i].image}"  alt="" class="" >`
+    console.log(data[i].image)}
 
+    const images = document.querySelectorAll(".gallery img")
+   
+
+  let currentActive =0
+  images[currentActive].classList.add("active")
+  
+  
+  
+  
+  nextButton.addEventListener("click", function(){
+    images[currentActive].classList.remove("active");
+    currentActive++;
+    if(currentActive===images.length)
+    {currentActive=0}
+    images[currentActive].classList.add("active");
+    console.log(currentActive)
+  } )
+  
+  prevButton.addEventListener("click", function(){
+    images[currentActive].classList.remove("active");
+    currentActive--;
+    if(currentActive < 0)
+    {currentActive=images.length-1}
+    images[currentActive].classList.add("active");
+    console.log(currentActive)
+   
+  } )
+  
+  
